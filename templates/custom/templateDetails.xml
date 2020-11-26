@@ -30,8 +30,11 @@
 		<position>position-2</position>
 		<position>position-7</position>
 		<position>main-menu</position>
+		<position>mobile-menu</position>
 		<position>header</position>
 		<position>breadcrumbs</position>
+		<position>subscribe-block</position>
+		<position>expert-block</position>
 		<position>footer</position>
 	</positions>
 	<languages folder="language">

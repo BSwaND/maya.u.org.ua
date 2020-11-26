@@ -1,5 +1,8 @@
 <?php
 	/**
+	 *
+	 * &&&&&&&&&&&&
+	 * 
 	 * @package     Joomla.Site
 	 * @subpackage  com_content
 	 *
@@ -14,10 +17,6 @@
 	$coordinates = 	explode(',' ,$this->item->jcfields[21]->value);
 	$gallery_foto = json_decode($this->item->jcfields[29]->rawvalue);
 
-
-//	echo "<pre style='font-size: 10px;'>";
-//	print_r(  $gallery_foto );
-//	echo "</pre>";
 ?>
 <div class="item-page<?php echo $this->pageclass_sfx; ?>" itemscope itemtype="https://schema.org/Article">
 	<meta itemprop="inLanguage" content="<?php echo ($this->item->language === '*') ? JFactory::getConfig()->get('language') : $this->item->language; ?>" />
@@ -75,9 +74,11 @@
 						<div class="flex align-center mb20">
 							<span class="object-price color-orange">$  <?= $this->item->jcfields[12]->value ?></span>
 
-							<?php if($this->item->jcfields[12]->value) { ?>
-								<span class="object-year"><?= $this->item->jcfields[28]->value ?> года постройки</span>
+							<span class="object-year">
+							<?php if($this->item->jcfields[28]->value) { ?>
+								<?= $this->item->jcfields[28]->value ?> года постройки
 							<?php }?>
+							</span>
 
 							<span class="object-id">ID  <?= $this->item->id ?></span>
 						</div>
