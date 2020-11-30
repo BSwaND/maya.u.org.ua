@@ -1,0 +1,155 @@
+@font-face {
+  font-family: 'ProximaNova';
+  src: url('ProximaNova-Regular.eot');
+  src: url('ProximaNova-Regular.eot?#iefix') format('embedded-opentype'),
+       url('ProximaNova-Regular.svg#ProximaNovaCond-Regular') format('svg'),
+       url('ProximaNova-Regular.ttf') format('truetype'),
+       url('ProximaNova-Regular.woff') format('woff'),
+       url('ProximaNova-Regular.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'ProximaNova';
+  src: url('ProximaNova-Bold.eot');
+  src: url('ProximaNova-Bold.eot?#iefix') format('embedded-opentype'),
+       url('ProximaNova-Bold.svg#ProximaNovaCond-Bold') format('svg'),
+       url('ProximaNova-Bold.ttf') format('truetype'),
+       url('ProximaNova-Bold.woff') format('woff'),
+       url('ProximaNova-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'ProximaNova';
+  src: url('ProximaNova-Extrabld.eot');
+  src: url('ProximaNova-Extrabld.eot?#iefix') format('embedded-opentype'),
+       url('ProximaNova-Extrabld.svg#ProximaNovaCond-Extrabld') format('svg'),
+       url('ProximaNova-Extrabld.ttf') format('truetype'),
+       url('ProximaNova-Extrabld.woff') format('woff'),
+       url('ProximaNova-Extrabld.woff2') format('woff2');
+  font-weight: 800;
+  font-style: normal;
+}
+
+
+
+@font-face {
+  font-family: 'icomoon';
+  src:  url('icomoon.eot?396inw');
+  src:  url('icomoon.eot?396inw#iefix') format('embedded-opentype'),
+    url('icomoon.ttf?396inw') format('truetype'),
+    url('icomoon.woff?396inw') format('woff'),
+    url('icomoon.svg?396inw#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="icon-"]:before, [class*=" icon-"]:before { 
+  font-family: 'icomoon' !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+
+.icon-balance:before {
+  content: "\e900";
+}
+.icon-bed:before {
+  content: "\e901";
+}
+.icon-build:before {
+  content: "\e902";
+}
+.icon-builder:before {
+  content: "\e903";
+}
+.icon-case:before {
+  content: "\e904";
+}
+.icon-check:before {
+  content: "\e905";
+}
+.icon-consult:before {
+  content: "\e906";
+}
+.icon-description:before {
+  content: "\e907";
+}
+.icon-facebook:before {
+  content: "\e908";
+}
+.icon-floor:before {
+  content: "\e909";
+}
+.icon-heart:before {
+  content: "\e90a";
+}
+.icon-home-2:before {
+  content: "\e90b";
+}
+.icon-home:before {
+  content: "\e90c";
+}
+.icon-instagram:before {
+  content: "\e90d";
+}
+.icon-key:before {
+  content: "\e90e";
+}
+.icon-law:before {
+  content: "\e90f";
+}
+.icon-mail:before {
+  content: "\e910";
+}
+
+.icon-object:before {
+  content: "\e912";
+}
+.icon-pin:before {
+  content: "\e913";
+}
+.icon-price:before {
+  content: "\e915";
+}
+.icon-search:before {
+  content: "\e916";
+}
+.icon-send:before {
+  content: "\e914";
+}
+.icon-shower:before {
+  content: "\e917";
+}
+.icon-tel:before {
+  content: "\e918";
+}
+.icon-telegram:before {
+  content: "\e919";
+}
+.icon-territory:before {
+  content: "\e91a";
+}
+.icon-viber:before {
+  content: "\e91b";
+}
+.icon-whatsapp:before {
+  content: "\e911";
+}
+.icon-youtube:before {
+  content: "\e91c";
+}
+.icon-law:before {
+  content: "\e91d";
+}
+.icon-price:before {
+  content: "\e91e";
+}
