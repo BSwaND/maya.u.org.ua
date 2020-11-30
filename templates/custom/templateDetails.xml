@@ -36,6 +36,9 @@
 		<position>subscribe-block</position>
 		<position>expert-block</position>
 		<position>footer</position>
+		<position>footer-menu</position>
+		<position>footer-menu-sale</position>
+		<position>footer-menu-rent</position>
 	</positions>
 	<languages folder="language">
 		<language tag="en-GB">language/en-GB/en-GB.tpl_custom.ini</language>

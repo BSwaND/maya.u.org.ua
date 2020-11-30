@@ -11,6 +11,20 @@
             jQuery('body').css('overflow', 'auto');
         }
     });
+    jQuery(".scroll").on("click", function(e) {
+        e.preventDefault();
+        const id = jQuery(this).attr("href"),
+        top = jQuery(id).offset().top - 250;
+        jQuery("body,html").animate({ scrollTop: top }, 1500);
+    });
+
+    jQuery(window).scroll(function() {
+    if (jQuery(window).scrollTop() > 300) {
+      jQuery(".header").addClass("sticky");
+    } else {
+      jQuery(".header").removeClass("sticky");
+    }
+    });
     jQuery('.menu-mobile .parent > a, .menu-mobile .parent > span').click(function (e) {
         e.preventDefault();
         jQuery(this).toggleClass('open');
@@ -225,25 +239,8 @@
     });
 
 
-  
 
 
-
-
-    // jQuery(".scroll").on("click", function(e) {
-    //     e.preventDefault();
-    //     const id = jQuery(this).attr("href"),
-    //     top = jQuery(id).offset().top - 150;
-    //     jQuery("body,html").animate({ scrollTop: top }, 1500);
-    // });
-
-    // jQuery(window).scroll(function() {
-    // if (jQuery(window).scrollTop() > 30) {
-    //   jQuery(".header").addClass("sticky");
-    // } else {
-    //   jQuery(".header").removeClass("sticky");
-    // }
-    // });
 
 
     
