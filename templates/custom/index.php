@@ -21,6 +21,7 @@
 	JHtml::_('stylesheet', 'jquery.fancybox.min.css', array('version' => 'v=0', 'relative' => true));
 	JHtml::_('stylesheet', 'swiper.min.css', array('version' => 'v=0', 'relative' => true));
 	JHtml::_('stylesheet', 'style.css', array('version' => 'v=0', 'relative' => true));
+	JHtml::_('stylesheet', 'custom.css', array('version' => 'v=0', 'relative' => true));
 
 
 	if ($myScript) { // при необходимости отключаем все скрипты и подключаем свежий jQuery (параметр выше)
@@ -179,6 +180,7 @@
 <script src="/templates/<?php echo $this->template; ?>/js/swiper.min.js"></script>
 <script src="/templates/<?php echo $this->template; ?>/js/script.js"></script>
 <script src="/templates/<?php echo $this->template; ?>/js/custom.js"></script>
-<script async defer  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD05yH55GKkhSphg8Fz8OIueKEp-kq_hkg&callback=initMap"></script>
+<!--<script async defer  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD05yH55GKkhSphg8Fz8OIueKEp-kq_hkg&callback=initMap"></script>-->
+<script async defer  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD05yH55GKkhSphg8Fz8OIueKEp-kq_hkg&callback=initMapMainPage"></script>
 </body>
-</html>
+</html>       

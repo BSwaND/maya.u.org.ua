@@ -12,6 +12,4 @@
 	include_once(JPATH_BASE . '/templates/custom/html/com_content/article/_head-article.php');
 	include_once(JPATH_BASE . '/templates/custom/html/com_content/article/model/_result.php');
 	include_once(JPATH_BASE . '/templates/custom/html/com_content/article/_body-article.php');
-
-
-
+	

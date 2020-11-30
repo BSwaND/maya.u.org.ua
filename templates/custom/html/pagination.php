@@ -86,9 +86,7 @@ function pagination_list_render($list)
 				$page['data'] = preg_replace('#(<a.*?>).*?(</a>)#', '$1...$2', $page['data']);
 			}
 		}
-		
 		$html .= '<li class="number">' . str_replace('?limitstart=0', '', $page['data']) . '</li>';
-		
 	}
 
 	$html .= '<li class="pagination-next">' . $list['next']['data'] . '</li>';
@@ -119,7 +117,11 @@ function pagination_list_render($list)
  */
 function pagination_item_active(JPaginationObject $item)
 {
-    return '<a title="' . $item->text . '" href="' . $item->link . '" class="pagenav">' . $item->text . '</a>';
+	$itemUrl = str_replace('start', 'page', $item->link);
+    //return '<a title="' . $item->text . '" href="' . $item->link . '" class="pagenav">' . $item->text . '</a>';
+    return '<a title="' . $item->text . '" href="' . $itemUrl . '" class="pagenav">' . $item->text . '</a>';
+
+   // return  $itemUrl ;
 }
 
 /**

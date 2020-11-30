@@ -35,6 +35,8 @@
 		<position>breadcrumbs</position>
 		<position>subscribe-block</position>
 		<position>expert-block</position>
+		<position>nearby-object</position>
+		<position>like-object</position>
 		<position>footer</position>
 		<position>footer-menu</position>
 		<position>footer-menu-sale</position>

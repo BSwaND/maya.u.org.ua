@@ -29,20 +29,23 @@
 	$afterDisplayContent = trim(implode("\n", $results));
 
 
-	if($_POST)
-	{
+	$set_limit =  ($_GET['set_limit']) ? $_GET['set_limit'] : 8 ;
+	$limstart =  ($_GET['page']) ? $_GET['page'] : 0 ;
 
-	}
+
 	include_once(JPATH_BASE . '/templates/custom/html/com_content/article/chank/order_sort.php');
 	include_once(JPATH_BASE . '/templates/custom/html/com_content/article/model/_select_product.php');
 
 	$query->where($db->quoteName('c.state') . ' = 1' );
 	$query->andWhere('cat.parent_id = ' . $this->get('category')->id);
 	$query->orWhere('c.catid = ' . $this->get('category')->id);
-
-
 	$query->group('id');
-	$query->setLimit($set_limit);
+
+	// counter rows
+	$db->setQuery($query)->query();
+	$allRows = $db->getNumRows();
+	
+	$query->setLimit($set_limit, $limstart);
 
 	if($order_sort)
 	{
@@ -52,8 +55,12 @@
 	$db->setQuery($query);
 	$product =  $db->loadObjectList();
 
+	jimport('joomla.html.pagination');
+	$pageNav = new JPagination((int)$allRows, $limstart, $set_limit);
 
 	include_once(JPATH_BASE . '/templates/custom/html/com_content/article/_body-article.php');
+
+
 
 //		echo '<pre style="font-size: 12px; width: 80%; margin: auto; background: #eee; padding: 20px;">';
 //		print_r($this->get('category')->id);

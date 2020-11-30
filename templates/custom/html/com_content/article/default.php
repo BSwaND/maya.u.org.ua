@@ -1,7 +1,5 @@
 <?php
 	/**
-	 *
-	 * &&&&&&&&&&&&
 	 * 
 	 * @package     Joomla.Site
 	 * @subpackage  com_content
@@ -16,6 +14,15 @@
 
 	$coordinates = 	explode(',' ,$this->item->jcfields[21]->value);
 	$gallery_foto = json_decode($this->item->jcfields[29]->rawvalue);
+
+	$mikrorajon = null;
+	$mikrorajon = [$this->item->jcfields[6]->rawvalue[0] , $this->item->jcfields[7]->rawvalue[0] , $this->item->jcfields[8]->rawvalue[0] , $this->item->jcfields[9]->rawvalue[0] , $this->item->jcfields[10]->rawvalue[0] ];
+	foreach( $mikrorajon as $key){  ($key != 0) ?  $mikrorajon = $key : null; }
+
+	$document->this_id = $this->item->id;
+	$document->parent_id = $mikrorajon;
+	$document->type_nedviz = $this->item->jcfields[4]->rawvalue[0];
+	$document->cat_parent_id = $this->item->parent_id;
 
 ?>
 <div class="item-page<?php echo $this->pageclass_sfx; ?>" itemscope itemtype="https://schema.org/Article">
@@ -73,6 +80,7 @@
 					<div class="content-block">
 						<div class="flex align-center mb20">
 							<span class="object-price color-orange">$  <?= $this->item->jcfields[12]->value ?></span>
+							<div class=""><a href="#" class="icon-balance"></a></div>
 
 							<span class="object-year">
 							<?php if($this->item->jcfields[28]->value) { ?>
@@ -143,6 +151,29 @@
 <style>
 	#map {width:100%; height:600px;}
 </style>
+
+<?php
+	$module = JModuleHelper::getModules('nearby-object');
+	echo JModuleHelper::renderModule($module[0], $attribs);
+?>
+<?php
+	$module = JModuleHelper::getModules('like-object');
+	echo JModuleHelper::renderModule($module[0], $attribs);
+?>
+
+<?php
+	$module = JModuleHelper::getModules('expert-block');
+	echo JModuleHelper::renderModule($module[0], $attribs);
+?>
+
+<div class="container">
+	<?php
+		$module = JModuleHelper::getModules('subscribe-block');
+		echo JModuleHelper::renderModule($module[0], $attribs);
+	?>
+</div>
+
+
 
 
 

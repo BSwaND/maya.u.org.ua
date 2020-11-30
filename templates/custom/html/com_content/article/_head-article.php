@@ -3,6 +3,8 @@
 
 	JHtml::addIncludePath(JPATH_COMPONENT . '/helpers');
 
+	$document = JFactory::getDocument();
+
 // Create shortcuts to some parameters.
 	$params  = $this->item->params;
 	$images  = json_decode($this->item->images);

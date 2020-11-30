@@ -1,9 +1,8 @@
 <?php
 	defined('_JEXEC') or die;
 
-	if($_POST)
-	{
-	}
+	$set_limit =  ($_GET['set_limit']) ? $_GET['set_limit'] : 8 ;
+	$limstart =  ($_GET['page']) ? $_GET['page'] : 0 ;
 
 	include_once(JPATH_BASE . '/templates/custom/html/com_content/article/chank/order_sort.php');
 	include_once(JPATH_BASE . '/templates/custom/html/com_content/article/model/_select_product.php');
@@ -33,9 +32,13 @@
 		$query->orWhere('cat.parent_id = ' . 9);
 		$query->order('c.publish_up DESC ');
 	}
-
 	$query->group('id');
-	$query->setLimit($set_limit);
+
+	// counter rows
+	$db->setQuery($query)->query();
+	$allRows = $db->getNumRows();
+	
+	$query->setLimit($set_limit, $limstart);
 
 	if($order_sort)
 	{
@@ -44,3 +47,6 @@
 
 	$db->setQuery($query);
 	$product =  $db->loadObjectList();
+
+	jimport('joomla.html.pagination');
+	$pageNav = new JPagination((int)$allRows, $limstart, $set_limit);

@@ -1,32 +1,36 @@
 <?php
 	defined('_JEXEC') or die;
 
-	if($_POST)
-	{
-		$cat_id = (int)$_POST['type_estate'] ;
+	$set_limit =  ($_GET['set_limit']) ? $_GET['set_limit'] : 8 ;
+	$limstart =  ($_GET['page']) ? $_GET['page'] : 0 ;
 
-		$tip_nedvizhimosti        = (int)$_POST['tip_nedvizhimosti'];
-		$rajon                    = $_POST['rajon'];
-		$mikrorajon               = (int)$_POST['mikrorajonyn'];
-		$ploshchad_obshchaya_ot   =  (int)$_POST['ploshchad_obshchaya_ot'];
-		$ploshchad_obshchaya_do   =  (int)$_POST['ploshchad_obshchaya_do'];
-		$tsena_ot                 =  (int)$_POST['tsena_ot'];
-		$tsena_do                 =  (int)$_POST['tsena_do'];
-		$kol_vo_komnat_ot            =  (int)$_POST['kol_vo_komnat_ot'];
-		$kol_vo_komnat_do            =  (int)$_POST['kol_vo_komnat_do'];
-		$kol_vo_sanuzlov_ot          =  (int)$_POST['kol_vo_sanuzlov_ot'];
-		$kol_vo_sanuzlov_do          =  (int)$_POST['kol_vo_sanuzlov_do'];
-		$ploshchad_kukhni_ot         =  (int)$_POST['ploshchad_kukhni_ot'];
-		$ploshchad_kukhni_do         =  (int)$_POST['ploshchad_kukhni_do'];
-		$ploshchad_zhilaya_ot        =  (int)$_POST['ploshchad_zhilaya_ot'];
-		$ploshchad_zhilaya_do        =  (int)$_POST['ploshchad_zhilaya_do'];
-		$sostoyanie_remont        =  (int)$_POST['sostoyanie_remont'];
-		$etazhnost_zdaniya_ot        =  (int)$_POST['etazhnost_zdaniya_ot'];
-		$etazhnost_zdaniya_do        =  (int)$_POST['etazhnost_zdaniya_do'];
-		$kolichestvo_sotok_zemli_ot  =  (int)$_POST['kolichestvo_sotok_zemli_ot'];
-		$kolichestvo_sotok_zemli_do  =  (int)$_POST['kolichestvo_sotok_zemli_do'];
-		$tip_kom_nedviz              =  (int)$_POST['tip_kom_nedviz'];
-		$raspolz_kom_nedvz           =  (int)$_POST['raspolz_kom_nedvz'];
+	if($_GET)
+	{
+		$cat_id = (int)$_GET['type_estate'] ;
+
+		$tip_nedvizhimosti        = (int)$_GET['tip_nedvizhimosti'];
+		$rajon                    = $_GET['rajon'];
+		$mikrorajon               = (int)$_GET['mikrorajonyn'];
+		$ploshchad_obshchaya_ot   =  (int)$_GET['ploshchad_obshchaya_ot'];
+		$ploshchad_obshchaya_do   =  (int)$_GET['ploshchad_obshchaya_do'];
+		$tsena_ot                 =  (int)$_GET['tsena_ot'];
+		$tsena_do                 =  (int)$_GET['tsena_do'];
+		$kol_vo_komnat_ot            =  (int)$_GET['kol_vo_komnat_ot'];
+		$kol_vo_komnat_do            =  (int)$_GET['kol_vo_komnat_do'];
+		$kol_vo_sanuzlov_ot          =  (int)$_GET['kol_vo_sanuzlov_ot'];
+		$kol_vo_sanuzlov_do          =  (int)$_GET['kol_vo_sanuzlov_do'];
+		$ploshchad_kukhni_ot         =  (int)$_GET['ploshchad_kukhni_ot'];
+		$ploshchad_kukhni_do         =  (int)$_GET['ploshchad_kukhni_do'];
+		$ploshchad_zhilaya_ot        =  (int)$_GET['ploshchad_zhilaya_ot'];
+		$ploshchad_zhilaya_do        =  (int)$_GET['ploshchad_zhilaya_do'];
+		$sostoyanie_remont        =  (int)$_GET['sostoyanie_remont'];
+		$etazhnost_zdaniya_ot        =  (int)$_GET['etazhnost_zdaniya_ot'];
+		$etazhnost_zdaniya_do        =  (int)$_GET['etazhnost_zdaniya_do'];
+		$kolichestvo_sotok_zemli_ot  =  (int)$_GET['kolichestvo_sotok_zemli_ot'];
+		$kolichestvo_sotok_zemli_do  =  (int)$_GET['kolichestvo_sotok_zemli_do'];
+		$tip_kom_nedviz              =  (int)$_GET['tip_kom_nedviz'];
+		$raspolz_kom_nedvz           =  (int)$_GET['raspolz_kom_nedvz'];
+		//$start                      =  (int)$_GET['start'];
 
 	}
 
@@ -120,14 +124,23 @@
 
 	$query->andWhere($db->quoteName('c.state') . ' = 1' );
 	$query->group('id');
-	$query->setLimit($set_limit);
+
+	// counter rows
+	$db->setQuery($query)->query();
+	$allRows = $db->getNumRows();
+
+	$query->setLimit($set_limit, $limstart);
+	//$query->setLimit($set_limit);
 
 	if($order_sort)
 	{
 		$query->order($order_sort);
 	}
 
+
 	$db->setQuery($query);
 	$product =  $db->loadObjectList();
 
+	jimport('joomla.html.pagination');
+	$pageNav = new JPagination((int)$allRows, $limstart, $set_limit);
 

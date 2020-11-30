@@ -2,6 +2,7 @@
 	defined('_JEXEC') or die;
 	
 	$db    = JFactory::getDbo();
+	
 	$query = $db->getQuery(true)
 		->select($db->quoteName(['c.id','c.title', 'c.catid','c.introtext','c.fulltext', 'c.images','c.publish_up','c.alias']))
 		->from($db->quoteName('#__content','c'));
