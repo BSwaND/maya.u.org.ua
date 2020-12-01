@@ -60,7 +60,7 @@
 						<div class="object-slider swiper-slider">
 							<div class="swiper-wrapper">
 								<div class="swiper-slide">
-									<a href="/templates/custom/images/slide1.jpg" data-fancybox="object-gallery">
+									<a href="<?= (json_decode( $this->item->images)->image_intro) ? json_decode( $this->item->images)->image_intro : '/templates/custom/icon/joomla-logo.png' ?>" data-fancybox="object-gallery">
 										<img src="<?= (json_decode( $this->item->images)->image_intro) ? json_decode( $this->item->images)->image_intro : '/templates/custom/icon/joomla-logo.png' ?>" alt="<?= $this->item->title ?>">
 									</a>
 								</div>
@@ -80,7 +80,7 @@
 					<div class="content-block">
 						<div class="flex align-center mb20">
 							<span class="object-price color-orange">$  <?= $this->item->jcfields[12]->value ?></span>
-							<div class=""><a href="#" class="icon-balance"></a></div>
+							<div class=""><a  data-id-product="<?= $itemProduct->id ?>" class="icon-balance icon-balance-add"></a></div>
 
 							<span class="object-year">
 							<?php if($this->item->jcfields[28]->value) { ?>
@@ -113,20 +113,28 @@
 							<?= $this->item->text ?>
 						</div>
 						<div class="object-contacts flex">
+						<?php
+							$idUser = $this->item->jcfields[32]->rawvalue;
+							if($idUser)
+							{
+								include_once(JPATH_BASE . '/templates/custom/html/com_content/article/model/_getUserData.php'); ?>
+
 							<div class="contact-item">
-								<p class="contact-person mb20">Ведущий риелтор: <span class="name">ТАМАРА КЛИМОВА</span> </p>
+								<p class="contact-person mb20">Ведущий риелтор: <span class="name"><?= $userFild[35]->value ?></span> </p>
 								<div class="flex align-center">
 									<a href="#" class="btn">Задайте вопрос риелтору</a>
-									<a href="#" class="contact-tel icon-tel color-orange">+38 (099) 40 40 700</a>
+									<a href="#" class="contact-tel icon-tel color-orange"><?= $userFild[36]->value ?></a>
 								</div>
 							</div>
 							<div class="contact-item">
-								<p class="contact-person mb20">Ведущий риелтор: <span class="name">ТАМАРА КЛИМОВА</span> </p>
+								<p class="contact-person mb20">Ведущий риелтор: <span class="name"><?= $userFild[33]->value ?></span> </p>
 								<div class="flex align-center">
 									<a href="#" class="btn">Задайте вопрос риелтору</a>
-									<a href="#" class="contact-tel icon-tel color-orange">+38 (099) 40 40 700</a>
+									<a href="#" class="contact-tel icon-tel color-orange"><?= $userFild[34]->value ?></a>
 								</div>
 							</div>
+						<?php	}	?>
+
 						</div>
 					</div>
 
@@ -148,10 +156,6 @@
 	</div>
 </div>
 
-<style>
-	#map {width:100%; height:600px;}
-</style>
-
 <?php
 	$module = JModuleHelper::getModules('nearby-object');
 	echo JModuleHelper::renderModule($module[0], $attribs);
@@ -172,9 +176,6 @@
 		echo JModuleHelper::renderModule($module[0], $attribs);
 	?>
 </div>
-
-
-
 
 
 <script>

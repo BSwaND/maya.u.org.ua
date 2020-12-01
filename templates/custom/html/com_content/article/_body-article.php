@@ -1,5 +1,6 @@
 <?php
 	defined('_JEXEC') or die;
+	$session = JFactory::getSession();
 	?>
 
 <form method="get" id="order-sort-form" action="<?= JFactory::getURI()->toString()  ?>">
@@ -100,7 +101,7 @@
 							<div class="img-box">
 								<img src="<?= (json_decode($itemProduct->images)->image_intro) ? json_decode($itemProduct->images)->image_intro : '/templates/custom/icon/joomla-logo.png' ?>" alt="<?= $itemProduct->title ?>" class="item-image">
 								<span class="object-price color-orange">$  <?= $itemProduct->tsena_field_value ?></span>
-								<div class=""><a href="#" class="icon-balance"></a></div>
+								<div class=""><a  data-id-product="<?= $itemProduct->id ?>" class="icon-balance icon-balance-add"></a></div>
 							</div>
 							<div class="info">
 								<p class="icon-pin mb15"><b><?= $itemProduct->adres_field_value ?></b></p>
@@ -111,56 +112,11 @@
 							</div>
 							<div class="btn-box flex between align-center">
 								<a href="<?= JRoute::_(ContentHelperRoute::getCategoryRoute($itemProduct->catid)) .'/'. $itemProduct->alias  ?>" class="btn" >Смотреть</a>
-								<a href="#" class="show-map color-orange">На карте</a>
+							<?php if($itemProduct->iframe_map_value) {?>
+								<a class="show-map color-orange">На карте</a>
+							<?php } ?>
 							</div>
-							<!--							<div class="map-box"><img src="/images/map-card.jpg" alt=""></div> AIzaSyDBk7HP0J_IedREXBBmWhqlQ8tD90LfQLI -->
-							<div class="map-box" id="map-box">	</div>
-							<script>
-								function initMapItem() {
-									//let element = document.getElementById('map-box_<?//= $itemProduct->id ?>');
-									let element = document.getElementById('map-box');
-									let options = {
-										zoom: 5,
-										center: {lat: 55.7558, lng: 37.6173},
-									};
-
-									let myMap = new google.maps.Map(element, options);
-
-									let markers = [
-										{
-											coordinates: {lat: 55.751956, lng: 37.622634},
-											info: '<h3>Москва</h3><br><img src="https://placehold.it/200x150"><br><p>Описание</p>'
-										}
-									];
-
-									for(let i = 0; i < markers.length; i++) {
-										addMarker(markers[i]);
-									}
-
-									function addMarker(properties) {
-										let marker = new google.maps.Marker({
-											position: properties.coordinates,
-											map: myMap
-										});
-
-										if(properties.image) {
-											marker.setIcon(properties.image);
-										}
-
-										if(properties.info) {
-											let InfoWindow = new google.maps.InfoWindow({
-												content: properties.info
-											});
-
-											marker.addListener('click', function(){
-												InfoWindow.open(myMap, marker);
-											});
-										}
-									}
-								}
-							</script>
-<!--							<script async defer  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD05yH55GKkhSphg8Fz8OIueKEp-kq_hkg&callback=initMap--><?//= $itemProduct->id ?><!--"></script>-->
-							<script async defer  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD05yH55GKkhSphg8Fz8OIueKEp-kq_hkg&callback=initMapItem"></script>
+							<div class="map-box" ><?= $itemProduct->iframe_map_value ?></div>
 						</div>
 					</div>
 				<?php }	?>
@@ -185,4 +141,47 @@
 	$module = JModuleHelper::getModules('expert-block');
 	echo JModuleHelper::renderModule($module[0], $attribs);
 ?>
+
+	
+ <?php
+
+/*
+<script>
+	function initMapMainPage() {
+
+		var myOptions =
+			{
+				zoom: 5,
+				center: {lat: 55.751956, lng: 37.622634},
+			};
+
+		var myOptions2 =
+			{
+				zoom: 5,
+				center: {lat: 55.751956, lng: 37.622634},
+			};
+
+
+		var map = new google.maps.Map(document.getElementById("map-box"), myOptions);
+
+		var map2 = new google.maps.Map(document.getElementById("map_canvas_2"), myOptions2);
+
+
+		var myMarker = new google.maps.Marker(
+			{
+				position: {lat: 55.751956, lng: 37.622634},
+				map: map,
+			});
+		var myMarker2 = new google.maps.Marker(
+			{
+				position: {lat: 55.751956, lng: 37.622634},
+				map: map2,
+			});
+
+
+	}
+</script>
+<!--							<script async defer  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD05yH55GKkhSphg8Fz8OIueKEp-kq_hkg&callback=initMap--><?//= $itemProduct->id ?><!--"></script>-->
+
+		 */
 

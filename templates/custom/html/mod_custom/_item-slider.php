@@ -9,6 +9,7 @@
 			<div class="item-wrapper">
 				<div class="img-box"><img class="item-image" src="<?= (json_decode($itemProduct->images)->image_intro) ? json_decode($itemProduct->images)->image_intro : '/templates/custom/icon/joomla-logo.png' ?>" alt="<?= $itemProduct->title ?>" />
 					<span class="object-price color-orange">$ <?= $itemProduct->tsena_field_value ?></span>
+					<a  data-id-product="<?= $itemProduct->id ?>" class="icon-balance icon-balance-add"></a>
 				</div>
 				<div class="info">
 					<p class="icon-pin mb15"><b><?= $itemProduct->adres_field_value ?></b></p>
@@ -20,9 +21,11 @@
 				</div>
 				<div class="btn-box flex between align-center">
 					<a class="btn" href="<?= JRoute::_(ContentHelperRoute::getCategoryRoute($itemProduct->catid)) .'/'. $itemProduct->alias  ?>">Смотреть</a>
-					<a class="show-map color-orange" href="#">На карте</a>
+					<?php if($itemProduct->iframe_map_value) {?>
+					<a class="show-map color-orange">На карте</a>
+					<?php	}	?>
 				</div>
-				<div class="map-box"><img src="/images/map-card.jpg" alt="" /></div>
+				<div class="map-box"><?= $itemProduct->iframe_map_value ?></div>
 			</div>
 		</div>
 	</div>

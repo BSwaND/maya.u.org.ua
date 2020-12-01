@@ -1,8 +1,8 @@
 <?php
 	defined('_JEXEC') or die;
 
-	JHtml::addIncludePath(JPATH_COMPONENT . '/helpers');
 
+	JHtml::addIncludePath(JPATH_COMPONENT . '/helpers');
 	$document = JFactory::getDocument();
 
 // Create shortcuts to some parameters.

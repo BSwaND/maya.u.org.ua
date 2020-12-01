@@ -41,6 +41,7 @@
 		<position>footer-menu</position>
 		<position>footer-menu-sale</position>
 		<position>footer-menu-rent</position>
+		<position>find</position>
 	</positions>
 	<languages folder="language">
 		<language tag="en-GB">language/en-GB/en-GB.tpl_custom.ini</language>

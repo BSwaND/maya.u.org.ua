@@ -26,11 +26,6 @@
 	$product =  $db->loadObjectList();
 ?>
 
-<pre>
-	//<?php //  print_r($product);
-	?>
-</pre>
-
 <div class="week-offer mb110">
 	<div class="container">
 		<p class="title medium centered bottom-line mb45"><b>Предложение недели</b></p>

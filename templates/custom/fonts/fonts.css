@@ -153,3 +153,6 @@
 .icon-price:before {
   content: "\e91e";
 }
+.icon-chat:before {
+  content: "\e91f";
+}

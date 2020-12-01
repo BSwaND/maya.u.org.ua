@@ -210,6 +210,14 @@
 		. 'AND '
 		. $db->quoteName('eksklyz.field_id') . ' = '. 31);
 
+	$query->select($db->quoteName(['iframe_map.value','iframe_map.field_id'],['iframe_map_value','iframe_map_field_id']));
+	$query->leftJoin(
+		$db->quoteName('#__fields_values', 'iframe_map')
+		. ' ON '
+		. $db->quoteName('c.id') . ' = ' . $db->quoteName('iframe_map.item_id')
+		. 'AND '
+		. $db->quoteName('iframe_map.field_id') . ' = '. 38);
+
 
 	$query->select($db->quoteName(['cat.parent_id','cat.title'],['cat_parent_id','cat_title']))
 		->leftJoin(

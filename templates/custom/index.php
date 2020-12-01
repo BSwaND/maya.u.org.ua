@@ -15,6 +15,13 @@
 	if (is_object($menu))
 		$pageclass = $menu->params->get('pageclass_sfx');
 
+	$session = JFactory::getSession();
+
+
+	//$countIdSession = count(array_unique((explode(',', $session->get('dataIdProduct')))));
+	$countIdSession = array_unique((explode(',', $session->get('dataIdProduct'))));
+	$countIdSession = ($countIdSession[0]) ? count($countIdSession) : null ;
+
 	// Подключение своих стилей:
 	JHtml::_('stylesheet', 'bootstrap-grid.css', array('version' => 'v=0', 'relative' => true));
 	JHtml::_('stylesheet', 'animate.css', array('version' => 'v=0', 'relative' => true));
@@ -80,13 +87,18 @@
 							<a href="whatsapp://send?phone=+380949523000" class="icon-whatsapp"></a>
 						</div>
 						<div class="compare-box">
-							<a href="#" class="icon-balance"></a>
-							<span class="counter">1</span>
+							<a href="/sravneniya" class="icon-balance"></a>
+							<?php //if($countIdSession[0]){ ?>
+								<span class="<?= ($countIdSession) ? '' : null?> counter"><?= $countIdSession ?></span>
+
+							<?php // }	?>
 						</div>
 					</div>
 					<div class="header-bottom">
 						<jdoc:include type="modules" name="main-menu" style="none" />
 						<i class="icon-search"></i>
+
+						<jdoc:include type="modules" name="find" style="none" />
 						<div class="burger-menu">
 							<span></span>
 							<span></span>
@@ -174,13 +186,14 @@
 <jdoc:include type="modules" name="mobile-menu" style="none" />
 
 <!-- Подключение скриптов в конце документа -->
-<!--<script src="/templates/--><?php //echo $this->template; ?><!--/js/jquery-3.3.1.min.js"></script>-->
 <script src="/templates/<?php echo $this->template; ?>/js/wow.min.js"></script>
 <script src="/templates/<?php echo $this->template; ?>/js/jquery.fancybox.min.js"></script>
 <script src="/templates/<?php echo $this->template; ?>/js/swiper.min.js"></script>
+<script src="/templates/<?php echo $this->template; ?>/js/jquery.cookie.js"></script>
 <script src="/templates/<?php echo $this->template; ?>/js/script.js"></script>
 <script src="/templates/<?php echo $this->template; ?>/js/custom.js"></script>
 <!--<script async defer  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD05yH55GKkhSphg8Fz8OIueKEp-kq_hkg&callback=initMap"></script>-->
-<script async defer  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD05yH55GKkhSphg8Fz8OIueKEp-kq_hkg&callback=initMapMainPage"></script>
+<!--<script async defer  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD05yH55GKkhSphg8Fz8OIueKEp-kq_hkg&callback=initMapItem"></script>-->
+<script async defer  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD05yH55GKkhSphg8Fz8OIueKEp-kq_hkg&callback=initMap"></script>
 </body>
 </html>       

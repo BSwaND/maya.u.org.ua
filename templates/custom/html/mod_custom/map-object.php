@@ -35,7 +35,7 @@
 </div>
 
 <script>
-	function initMapMainPage() {
+	function initMap() {
 		var element = document.getElementById('map-main-page');
 		var options = {
 			zoom: 12,
