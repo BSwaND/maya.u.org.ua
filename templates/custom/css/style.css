@@ -2011,7 +2011,7 @@ html, body, div, * {
 	.header-menu > .menu-item > a,
 	.header-menu > .menu-item > span {padding: 20px 15px;}
   .footer .links-block{width: 100%; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center;}
-  .footer .links-block .social-links{margin-bottom: 10px;}
+  .footer .links-block .social-links{margin: 0 auto 10px 15px;}
   .footer .menu-block{width: 40%;}
   .footer .menu-block.sitemap{width: 20%;}
   .footer .menu-block a{margin-bottom: 10px;}

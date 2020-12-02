@@ -22,6 +22,10 @@ Options -Indexes
 
 RewriteEngine On
 
+RewriteCond %{HTTP_HOST} ^www\.(.*) [NC]
+RewriteRule ^(.*)$ http://%1/$1 [R=301,L]
+
+
 ## Begin - Rewrite rules to block out some common exploits.
 # If you experience problems on your site then comment out the operations listed
 # below by adding a # to the beginning of the line.

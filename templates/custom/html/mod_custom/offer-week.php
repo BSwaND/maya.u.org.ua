@@ -36,7 +36,7 @@
 						<div class="swiper-slide">
 							<div class="item">
 								<div class="img-box"><img src="<?= (json_decode($itemProduct->images)->image_intro) ? json_decode($itemProduct->images)->image_intro : '/templates/custom/icon/joomla-logo.png' ?>" alt="Предложение недели" />
-									<p class="title medium white"><?= $itemProduct->cat_title ?></p>
+									<p class="title medium white"><?= $itemProduct->title ?></p>
 									<?php // 	<p class="text white mb30">Доступна продажа и долгосрочная аренда!</p> ?>
 								</div>
 								<div class="content-wrapper">

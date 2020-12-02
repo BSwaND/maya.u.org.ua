@@ -120,7 +120,7 @@
 								include_once(JPATH_BASE . '/templates/custom/html/com_content/article/model/_getUserData.php'); ?>
 
 							<div class="contact-item">
-								<p class="contact-person mb20">Ведущий риелтор: <span class="name"><?= $userFild[35]->value ?></span> </p>
+								<p class="contact-person mb20">Отделение: <span class="name"><?= $userFild[35]->value ?></span> </p>
 								<div class="flex align-center">
 									<a href="#" class="btn">Задайте вопрос риелтору</a>
 									<a href="#" class="contact-tel icon-tel color-orange"><?= $userFild[36]->value ?></a>
@@ -184,6 +184,86 @@
 		var options = {
 			zoom: 15,
 			center: {lat: <?= $coordinates[0]?>, lng: <?= $coordinates[1]?>},
+			styles:		[
+				{
+					"featureType": "administrative",
+					"elementType": "labels.text.fill",
+					"stylers": [
+						{
+							"color": "#444444"
+						}
+					]
+				},
+				{
+					"featureType": "landscape",
+					"elementType": "all",
+					"stylers": [
+						{
+							"color": "#f2f2f2"
+						}
+					]
+				},
+				{
+					"featureType": "poi",
+					"elementType": "all",
+					"stylers": [
+						{
+							"visibility": "off"
+						}
+					]
+				},
+				{
+					"featureType": "road",
+					"elementType": "all",
+					"stylers": [
+						{
+							"saturation": -100
+						},
+						{
+							"lightness": 45
+						}
+					]
+				},
+				{
+					"featureType": "road.highway",
+					"elementType": "all",
+					"stylers": [
+						{
+							"visibility": "simplified"
+						}
+					]
+				},
+				{
+					"featureType": "road.arterial",
+					"elementType": "labels.icon",
+					"stylers": [
+						{
+							"visibility": "off"
+						}
+					]
+				},
+				{
+					"featureType": "transit",
+					"elementType": "all",
+					"stylers": [
+						{
+							"visibility": "off"
+						}
+					]
+				},
+				{
+					"featureType": "water",
+					"elementType": "all",
+					"stylers": [
+						{
+							"color": "#aaaacb"
+						},
+						{
+							"visibility": "on"
+						}
+					]
+				}
+			]
 		};
 
 		var myMap = new google.maps.Map(element, options);

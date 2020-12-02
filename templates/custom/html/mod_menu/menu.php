@@ -68,10 +68,10 @@ if ($tagId = $params->get('tag_id', ''))
 
 	echo '<li class="' . $class . ' menu-item">';
 
-	$linkExploded = explode('/', $item->flink);
-  	if(array_pop($linkExploded) != '') {
-     	$item->flink .= '/';
-	}
+	// $linkExploded = explode('/', $item->flink);
+ //  	if(array_pop($linkExploded) != '') {
+ //     	$item->flink .= '/';
+	// }
 	  
 	switch ($item->type) :
 		case 'separator':

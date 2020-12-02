@@ -68,7 +68,7 @@
 			<div class="flex between">
 				<div class="form-group">
 					<div class="flex mb20 operation-type-select">
-						<label class="operation-label <?= ($_GET['type_estate'] == 9 || empty($_GET['type_estate'])) ? 'active' : null?>"">
+						<label class="operation-label <?= ($_GET['type_estate'] == 9 || empty($_GET['type_estate'])) ? 'active' : null?>">
 						<span class="operation-label-text">Аренда</span>
 						<input class="operation-input" type="radio" name="type_estate" value="9" id="type_estate_1"  checked >
 						</label>
@@ -227,7 +227,7 @@
 							</div>
 							<div class="field-box commerce">
 								<p class="label">Тип объекта:</p>
-								<div class="select" id="">
+								<div class="select">
 									<div class="select-title">
 										<?php $optionsId = 'options'. $_GET['tip_kom_nedviz'] ?>
 										<?= ($tip_kommercheskoj_nedvizhimosti->options->$optionsId->name || $_GET['tip_kom_nedviz'] === '0') ? $tip_kommercheskoj_nedvizhimosti->options->$optionsId->name :  $tip_kommercheskoj_nedvizhimosti->options->options0->name ?>
@@ -245,7 +245,7 @@
 							</div>
 							<div class="field-box commerce">
 								<p class="label">Расположение:</p>
-								<div class="select" id="">
+								<div class="select">
 									<div class="select-title">
 										<?php $optionsId = 'options'. $_GET['raspolz_kom_nedvz'] ?>
 										<?= ($raspolozhenie_kommercheskoj_nedvizhimosti->options->$optionsId->name || $_GET['raspolz_kom_nedvz'] === '0') ? $raspolozhenie_kommercheskoj_nedvizhimosti->options->$optionsId->name :  $raspolozhenie_kommercheskoj_nedvizhimosti->options->options0->name ?>

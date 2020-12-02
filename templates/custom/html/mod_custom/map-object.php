@@ -34,6 +34,9 @@
 	</div>
 </div>
 
+
+<script src="https://unpkg.com/@google/markerclustererplus@4.0.1/dist/markerclustererplus.min.js"></script>
+
 <script>
 	function initMap() {
 		var element = document.getElementById('map-main-page');
@@ -134,9 +137,16 @@
 				<?php  }?>
 		];
 
+
+
 		for(var i = 0; i < markers.length; i++) {
 			addMarker(markers[i]);
 		}
+
+	 new MarkerClusterer(myMap, markers, {
+			imagePath:
+				"https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m",
+		});
 
 		function addMarker(properties) {
 			var marker = new google.maps.Marker({
@@ -160,6 +170,5 @@
 		}
 	}
 </script>
-
 
 
