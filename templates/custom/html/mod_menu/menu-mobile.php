@@ -19,7 +19,7 @@ if ($tagId = $params->get('tag_id', ''))
 // The menu class is deprecated. Use nav instead
 ?>
 <ul class="nav menu-mobile menu<?php echo $class_sfx; ?> mod-list"<?php echo $id; ?>>
-	<li><a class="logo" href="/"><img src="images/logo_white.png" alt="logo"></a></li>
+	<li><a class="logo icon-logo" href="/"></a></li>
 <?php foreach ($list as $i => &$item)
 {
 	$class = 'item-' . $item->id;

@@ -54,11 +54,11 @@
 	}
 
 
-	if($_GET && false) {
-		echo '<pre>';
-		print_r($_GET);
-		echo '</pre>';
-	}
+//	if($_GET && false) {
+//		echo '<pre>';
+//		print_r($_GET);
+//		echo '</pre>';
+//	}
 
 ?>
 
@@ -68,13 +68,14 @@
 			<div class="flex between">
 				<div class="form-group">
 					<div class="flex mb20 operation-type-select">
-						<label class="operation-label <?= ($_GET['type_estate'] == 9 || empty($_GET['type_estate'])) ? 'active' : null?>">
-						<span class="operation-label-text">Аренда</span>
-						<input class="operation-input" type="radio" name="type_estate" value="9" id="type_estate_1"  checked >
-						</label>
-						<label class="operation-label <?= ($_GET['type_estate'] == 8) ? 'active' : null?>">
+						<label class="operation-label <?= ($_GET['type_estate'] == 8 || empty($_GET['type_estate'])) ? 'active' : null?>">
 							<span class="operation-label-text">Продажа</span>
-							<input class="operation-input" type="radio" name="type_estate" value="8" id="type_estate_2" <?= ($_GET['type_estate'] == 8) ? 'checked' : null?>>
+							<input class="operation-input" type="radio" name="type_estate" value="8" id="type_estate_2"  checked>
+						</label>
+
+						<label class="operation-label  <?= ($_GET['type_estate'] == 9) ? 'active' : null?>">
+						<span class="operation-label-text">Аренда</span>
+						<input class="operation-input" type="radio" name="type_estate" value="9" id="type_estate_1" <?= ($_GET['type_estate'] == 9) ? 'checked' : null?>  >
 						</label>
 					</div>
 
@@ -229,8 +230,16 @@
 								<p class="label">Тип объекта:</p>
 								<div class="select">
 									<div class="select-title">
-										<?php $optionsId = 'options'. $_GET['tip_kom_nedviz'] ?>
-										<?= ($tip_kommercheskoj_nedvizhimosti->options->$optionsId->name || $_GET['tip_kom_nedviz'] === '0') ? $tip_kommercheskoj_nedvizhimosti->options->$optionsId->name :  $tip_kommercheskoj_nedvizhimosti->options->options0->name ?>
+										<?php //$optionsId = 'options'. $_GET['tip_kom_nedviz'] ?>
+										<?php
+											$tip_kommercheskoj_name = null;
+											foreach ($tip_kommercheskoj_nedvizhimosti->options as $key=>$val){
+												if($val->value == $_GET['tip_kom_nedviz']){
+													$tip_kommercheskoj_name = $val->name ;
+												}
+											}
+										?>
+										<?= ($tip_kommercheskoj_name || $_GET['tip_kom_nedviz'] === '0') ? $tip_kommercheskoj_name :  $tip_kommercheskoj_nedvizhimosti->options->options0->name ?>
 									</div>
 									<div class="select-content">
 										<?php
@@ -247,8 +256,16 @@
 								<p class="label">Расположение:</p>
 								<div class="select">
 									<div class="select-title">
-										<?php $optionsId = 'options'. $_GET['raspolz_kom_nedvz'] ?>
-										<?= ($raspolozhenie_kommercheskoj_nedvizhimosti->options->$optionsId->name || $_GET['raspolz_kom_nedvz'] === '0') ? $raspolozhenie_kommercheskoj_nedvizhimosti->options->$optionsId->name :  $raspolozhenie_kommercheskoj_nedvizhimosti->options->options0->name ?>
+										<?php //$optionsId = 'options'. $_GET['raspolz_kom_nedvz'] ?>
+										<?php
+											$raspolozhenie_kommercheskoj_name = null;
+											foreach ($raspolozhenie_kommercheskoj_nedvizhimosti->options as $key=>$val){
+												if($val->value == $_GET['raspolz_kom_nedvz']){
+													$raspolozhenie_kommercheskoj_name = $val->name ;
+												}
+											}
+										?>
+										<?= ($raspolozhenie_kommercheskoj_name || $_GET['raspolz_kom_nedvz'] === '0') ? $raspolozhenie_kommercheskoj_name :  $raspolozhenie_kommercheskoj_nedvizhimosti->options->options0->name ?>
 									</div>
 									<div class="select-content">
 										<?php

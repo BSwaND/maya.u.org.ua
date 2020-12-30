@@ -17,8 +17,7 @@
 
 	$session = JFactory::getSession();
 
-
-	//$countIdSession = count(array_unique((explode(',', $session->get('dataIdProduct')))));
+	
 	$countIdSession = array_unique((explode(',', $session->get('dataIdProduct'))));
 	$countIdSession = ($countIdSession[0]) ? count($countIdSession) : null ;
 
@@ -77,10 +76,10 @@
 	<header class="header">
 		<div class="container">
 			<div class="flex between">
-				<a href="/" class="logo"><img src="/templates/custom/images/logo.png" alt="logo"></a>
+				<a href="/" class="logo icon-logo"></a>
 				<div class="header-content">
 					<div class="header-top">
-						<a href="+380487000000" class="icon-tel">+380 (48) 700-00-00</a>
+						<a href="tel:+380487000000" class="icon-tel">+380 (48) 700-00-00</a>
 						<div class="messenger-links">
 							<a href="tg://resolve/?domain=Maya_7000000" class="icon-telegram"></a>
 							<a href="viber://chat?number=+380949523000" class="icon-viber"></a>
@@ -88,15 +87,12 @@
 						</div>
 						<div class="compare-box">
 							<a href="/sravneniya" class="icon-balance"></a>
-							<?php //if($countIdSession[0]){ ?>
 								<span class="<?= ($countIdSession) ? '' : null?> counter"><?= $countIdSession ?></span>
-
-							<?php // }	?>
 						</div>
 					</div>
 					<div class="header-bottom">
 						<jdoc:include type="modules" name="main-menu" style="none" />
-						<i class="icon-search"></i>
+						<i class="icon-search show-search"></i>
 
 						<jdoc:include type="modules" name="find" style="none" />
 						<div class="burger-menu">
@@ -114,12 +110,6 @@
 	<main>
 		<jdoc:include type="component" />
 	</main>
-
-</div>
-
-
-<!--<jdoc:include type="modules" name="position-7" style="none" />-->
-<!--<jdoc:include type="modules" name="position-2" style="none" />-->
 
 
 <footer class="footer">
@@ -176,20 +166,67 @@
 			</div>
 		</div>
 		<div class="footer-bottom">
-			<div class="logo"><img src="/templates/custom/images/logo_white.png" alt="logo"></div>
+			<div class="logo icon-logo"></div>
 			<p class="copy">© 1997-<?php echo date('Y');?>.
 			Майя - продажа недвижимости в Одессе. Все права защищены</p>
 		</div>
 	</div>
 </footer>
+</div>
 
 <jdoc:include type="modules" name="mobile-menu" style="none" />
+
+<div class="modal-form main-form-modal">
+	<div class="form-wrapper">
+		<div class="close">+</div>
+		<p class="title small centered mb25"><b>Наше агенство готово вам помочь</b><br>оставьте свои координаты</p>
+		<form id="mainForm" class="main-form" action="/templates/custom/html/telegram.php" method="post">			
+			<div class="form-group">							
+				<input id="nameMain" class="input" name="Имя" required="" type="text" />
+				<label class="label" for="nameMain">Имя</label>
+			</div>
+			<div class="form-group">							
+				<input id="phoneMain" class="input" name="Телефон" required="" type="tel" />
+				<label class="label" for="phoneMain">Номер телефона</label>
+			</div>
+			<div class="form-group">							
+				<textarea name="Комментарий" id="messageMain" cols="30" rows="5" class="input"></textarea>
+				<label class="label" for="messageMain">Введите ваше сообщение</label>
+			</div>
+			<input type="hidden" name="host" value="<?php echo $_SERVER['HTTP_HOST']; ?>">
+			<input type="hidden" name="uri" value="<?php echo $_SERVER['REQUEST_URI']; ?>">
+			<input type="hidden" id="mainFormLink" name="Ссылка" value="">
+			<p class="fz12 centered mb25">*Ваши данные не будут передаваться третьим лицам</p> 
+			<button class="btn" type="submit">Оставить заявку</button>
+		</form>
+	</div>
+</div>
+<?php if(isset($_GET['sended']) == 'true') : ?>
+	<div class="modal-thanks modal-form open">
+		<div class="wrapper">
+			<div class="close">+</div>
+			<i class="icon-check mb15"></i>
+			<p class="title medium centered mb25">Благодарим за оставленную заявку! </p>
+			<p class="centered">Наш менеджер свяжется с вами <br>в ближайшее время</p>
+		</div>
+	</div>
+	
+<?php endif ?>
+<div class="contact-menu">
+	<div class="icon-chat"></div>
+	<a href="tel:+380487000000" class="link icon-tel"></a>
+	<a href="tg://resolve/?domain=Maya_7000000" class="link icon-telegram"></a>
+	<a href="viber://chat?number=+380949523000" class="link icon-viber"></a>
+	<a href="whatsapp://send?phone=+380949523000" class="link icon-whatsapp"></a>
+</div>
 
 <!-- Подключение скриптов в конце документа -->
 <script src="/templates/<?php echo $this->template; ?>/js/wow.min.js"></script>
 <script src="/templates/<?php echo $this->template; ?>/js/jquery.fancybox.min.js"></script>
 <script src="/templates/<?php echo $this->template; ?>/js/swiper.min.js"></script>
 <script src="/templates/<?php echo $this->template; ?>/js/jquery.cookie.js"></script>
+<script src="/templates/<?php echo $this->template; ?>/js/jquery.inputmasks.min.js"></script>
+<?/*<script src="/templates/<?php echo $this->template; ?>/uForm/js/script.js"></script>*/?>
 <script src="/templates/<?php echo $this->template; ?>/js/script.js"></script>
 <script src="/templates/<?php echo $this->template; ?>/js/custom.js"></script>
 <!--<script async defer  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD05yH55GKkhSphg8Fz8OIueKEp-kq_hkg&callback=initMap"></script>-->

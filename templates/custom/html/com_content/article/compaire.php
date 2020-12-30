@@ -41,31 +41,66 @@
 	<?= $this->item->text ?>
 
 </div>
-<div class="container">
+<div class="compaire-results bg-lightblue padding-section mb110">
+	<div class="container">
+		<?php if($product): ?>
+		<div class="flex results-box">			
+			<div class="item properties">
+				<div class="btn-box"><a href="#" class="btn">Очистить список</a></div>
+				<span class="cell">Наименование объекта</span>
+				<span class="cell">Стоимость</span>
+				<span class="cell">Район города</span>
+				<span class="cell">Улица</span>
+				<span class="cell">Этаж</span>
+				<span class="cell">Площадь участка, сот</span>
+				<span class="cell">Общая площадь, м²</span>
+				<span class="cell">Жилая, м²</span>
+				<span class="cell">Кухня, м²</span>
+				<span class="cell">Комнат, шт</span>
+				<span class="cell">Санузлов, шт</span>
 
-	<?php
-		if($product){
+
+				<span class="cell">Состояние</span>
+				<span class="cell">Особые характеристики</span>
+			</div>
+			<?php
 			foreach ($product as $itemProduct){     ?>
-				<div class="item" style="border: 1px solid #ccc">
-					<span class=""> id = <?= $itemProduct->id ?></span>  <a class="compaire-del" data-id-product="<?= $itemProduct->id ?>">x</a>
-					<p class="object-type"><?= $itemProduct->title ?></p>
-					<a href="<?= JRoute::_(ContentHelperRoute::getCategoryRoute($itemProduct->catid)) .'/'. $itemProduct->alias  ?>" class="btn" >Смотреть</a>
+				<div class="item">
+					<div class="img-wrap">
+						<a class="compaire-del" data-id-product="<?= $itemProduct->id ?>"></a>
+						<img src="<?= (json_decode($itemProduct->images)->image_intro) ? json_decode($itemProduct->images)->image_intro : '/templates/custom/icon/joomla-logo.png' ?>" alt="<?= $itemProduct->title ?>" class="item-image">
+					</div>
+					<span class="cell"><?= mb_strimwidth(strip_tags($itemProduct->title), 0, 32, '...') ?></span>
+					<span class="cell"><?= $itemProduct->tsena_field_value ?></span>
+					<span class="cell">Район</span>
+					<span class="cell"><?= $itemProduct->adres_field_value ?></span>
+					<span class="cell"><?= ($itemProduct->etazhnost_zdn_field_value) ? '/'. $itemProduct->etazhnost_zdn_field_value : null ?></span>
+					<span class="cell">Площадь участка</span>
+					<span class="cell"><?= $itemProduct->pls_obshchaya_m_field_value ?></span>
+					<span class="cell">Жилая, м²</span>
+					<span class="cell">Кухня, м²</span>
+					<span class="cell">Комнат, шт</span>
+					<span class="cell">Санузлов, шт</span>
+
+
+					<span class="cell">Состояние</span>
+					<span class="cell">Особые характеристики</span>
+					<div class="btn-box">
+						<a href="<?= JRoute::_(ContentHelperRoute::getCategoryRoute($itemProduct->catid)) .'/'. $itemProduct->alias  ?>" class="btn" >Смотреть</a>
+					</div>
+					
 				</div>
 			<?php } ?>
-		<?php } ?>
-
-
-	<?php
-		//	print_r($arrIdProduct);
-		//
-		//	echo '<pre>';
-		//	print_r($product);
-		//	echo '</pre>';
-		//	?>
-
-
+		</div>			
+		<?php endif; ?>
+	</div>		
+</div>
+<div class="container">
 	<?php
 		$module = JModuleHelper::getModules('subscribe-block');
 		echo JModuleHelper::renderModule($module[0], $attribs);
 	?>
+</div>
+		
+</div>
 </div>

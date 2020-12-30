@@ -132,7 +132,8 @@
 					  $coordinates = 	explode(',' , $itemProduct->koordinaty_field_value); ?>
 			{
 				coordinates: {lat: <?= $coordinates[0] ?>, lng: <?= $coordinates[1] ?>},
-				info: '<h3><?=  $itemProduct->title ?></h3><br><img src="<?= (json_decode($itemProduct->images)->image_intro) ? json_decode($itemProduct->images)->image_intro : '/templates/custom/icon/joomla-logo.png' ?>"><br><p> <?=  $itemProduct->adres_field_value?></p>'
+				<?/*info: '<h3><?=  $itemProduct->title ?></h3><br><img src="<?= (json_decode($itemProduct->images)->image_intro) ? json_decode($itemProduct->images)->image_intro : '/templates/custom/icon/joomla-logo.png' ?>"><br><p> <?=  $itemProduct->adres_field_value?></p>'*/?>
+				info: '<div class="item"><span class="object-type"><?= $itemProduct->cat_title ?></span><div class="img-box"><a href="<?= JRoute::_(ContentHelperRoute::getCategoryRoute($itemProduct->catid)) .'/'. $itemProduct->alias  ?>"><img src="<?= (json_decode($itemProduct->images)->image_intro) ? json_decode($itemProduct->images)->image_intro : '/templates/custom/icon/joomla-logo.png' ?>" alt="<?= $itemProduct->title ?>" class="item-image"></a>  <span class="object-price color-orange">$  <?= number_format($itemProduct->tsena_field_value, 0, ',', ' ')  ?></span><div class=""></div></div><p class="icon-pin"> <?=  $itemProduct->adres_field_value?></p><div class="flex between"><span class="caption">Площадь:<br> <?= $itemProduct->pls_obshchaya_m_field_value ?> м²</span><span class="caption">Этажей:<br> <?= $itemProduct->etaz_field_value ?><?= ($itemProduct->etazhnost_zdn_field_value) ? '/'. $itemProduct->etazhnost_zdn_field_value : null ?></span></div></div>'
 			},
 				<?php  }?>
 		];

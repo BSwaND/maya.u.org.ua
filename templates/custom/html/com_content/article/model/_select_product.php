@@ -4,7 +4,7 @@
 	$db    = JFactory::getDbo();
 	
 	$query = $db->getQuery(true)
-		->select($db->quoteName(['c.id','c.title', 'c.catid','c.introtext','c.fulltext', 'c.images','c.publish_up','c.alias']))
+		->select($db->quoteName(['c.id','c.title', 'c.catid','c.introtext','c.fulltext', 'c.images','c.publish_up','c.alias', 'c.state']))
 		->from($db->quoteName('#__content','c'));
 
 
@@ -65,7 +65,7 @@
 		. $db->quoteName('mik_suvorovskij.field_id') . ' = '. 10);
 
 
-	// не работает еще
+	// TODO проверить
 	$query->select($db->quoteName(['pls_obshchaya_m.value','pls_obshchaya_m.field_id'],['pls_obshchaya_m_field_value','pls_obshchaya_m_field_id']));
 	$query->leftJoin(
 		$db->quoteName('#__fields_values', 'pls_obshchaya_m')
@@ -217,6 +217,14 @@
 		. $db->quoteName('c.id') . ' = ' . $db->quoteName('iframe_map.item_id')
 		. 'AND '
 		. $db->quoteName('iframe_map.field_id') . ' = '. 38);
+
+	$query->select($db->quoteName(['valuta.value','valuta.field_id'],['valuta_value','valuta_field_id']));
+	$query->leftJoin(
+		$db->quoteName('#__fields_values', 'valuta')
+		. ' ON '
+		. $db->quoteName('c.id') . ' = ' . $db->quoteName('valuta.item_id')
+		. 'AND '
+		. $db->quoteName('valuta.field_id') . ' = '. 40);
 
 
 	$query->select($db->quoteName(['cat.parent_id','cat.title'],['cat_parent_id','cat_title']))

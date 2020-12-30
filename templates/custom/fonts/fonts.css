@@ -156,3 +156,33 @@
 .icon-chat:before {
   content: "\e91f";
 }
+.icon-created:before {
+  content: "\e920";
+}
+.icon-kitchen:before {
+  content: "\e921";
+}
+.icon-land:before {
+  content: "\e922";
+}
+.icon-living-area:before {
+  content: "\e923";
+}
+.icon-logo:before {
+  content: "\e924";
+}
+.icon-object-type:before {
+  content: "\e925";
+}
+.icon-repair:before {
+  content: "\e926";
+}
+.icon-rooms:before {
+  content: "\e927";
+}
+.icon-locations:before {
+  content: "\e928";
+}
+.icon-region:before {
+  content: "\e929";
+}

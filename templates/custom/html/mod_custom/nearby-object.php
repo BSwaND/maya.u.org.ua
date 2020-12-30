@@ -51,7 +51,7 @@
 		<div class="flex between align-center bottom-line mb40">
 			<p class="title medium"><b>Объекты рядом</b></p>
 		</div>
-		<div class="objects-slider hot-objects-slider swiper-container mb60">
+		<div class="objects-slider nearby-objects-slider swiper-container mb60">
 			<div class="swiper-wrapper">
 				<?php 	include(JPATH_BASE . '/templates/custom/html/mod_custom/_item-slider.php'); ?>
 			</div>

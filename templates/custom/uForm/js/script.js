@@ -2,7 +2,7 @@
 let showLog = !1;
 
 // method of notification after sending ('message' or 'modal')
-let handlerType = 'message';
+let handlerType = 'modal';
 let uFormFilePath = '/templates/custom/uForm/';
 // message about the result of sending
 let failMessage =  {
@@ -33,23 +33,14 @@ if (langParam == 'ru-ru') {
 
 // forms, form fields and their validation
 const uForms = {
-  'idForm': {
+  'mainForm': {
     handlerType: handlerType,
     failMessage: failMessage[lang],
     successMessage: successMessage[lang],
-    prefix: '',
+    prefix: '_main',
     validation: {
-      name: {
+      nameMain: {
         validLen: [2, 50]
-      },
-      tel: {
-        validTel
-      },
-      email: {
-        validEmail
-      },
-      message: {
-        validLen: [5, 250]
       },
     },
   },
@@ -417,6 +408,8 @@ function initJQ(mt) {
                   if(answer.success){
                     showResult(smform, true);
                     $('#uForm__reset' + smform.uFormPrefix).click();
+                    $('.modal-form').removeClass('open');
+                    $('.modal-thanks').addClass('open');
                   } else {
                     showResult(smform, false);
                     console.log(answer.info);

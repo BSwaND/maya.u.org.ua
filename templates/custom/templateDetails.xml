@@ -26,6 +26,7 @@
 		<folder>webfonts</folder>
 	</files>
 	<positions>
+		<position>logo</position>
 		<position>filter</position>
 		<position>position-2</position>
 		<position>position-7</position>

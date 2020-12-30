@@ -11,6 +11,22 @@
             jQuery('body').css('overflow', 'auto');
         }
     });
+    jQuery('.show-modal-form').click(function (e) {
+      e.preventDefault();
+      jQuery('#mainFormLink').val(jQuery(this).attr('data-link'));
+      jQuery('.main-form-modal').addClass('open');
+      jQuery('body').css('overflow', 'hidden');
+    });
+    jQuery('.modal-form .close').click(function () {
+      jQuery(this).parents('.modal-form').removeClass('open');
+      jQuery('body').css('overflow', 'auto');
+    });
+    jQuery('.modal-thanks').click(function () {
+      jQuery(this).removeClass('open');
+    });
+    jQuery('.show-search').click(function () {
+      jQuery('#rokajaxsearch').slideToggle();
+    });
     jQuery(".scroll").on("click", function(e) {
         e.preventDefault();
         const id = jQuery(this).attr("href"),
@@ -31,6 +47,17 @@
         jQuery(this).next('.nav-child').slideToggle();
 
     });
+
+    jQuery('.show-hidden-text').click(function (e) {
+        e.preventDefault();
+        const $this = jQuery(this);
+        $this.toggleClass('open');
+        if($this.hasClass('open')){
+          $this.text('Cвернуть');
+        } else {$this.text('Читать полностью');}
+        $this.parent().find('.hidden-text').slideToggle();
+    });
+
 // filter
     jQuery(".operation-label").on("click", function() {
         jQuery(".operation-label").removeClass('active');
@@ -110,8 +137,7 @@
     });
 
     var nearbyObjectsSlider = new Swiper('.nearby-objects-slider', {
-        // autoplay: {delay: 3000,},
-        loop: true,
+        // autoplay: {delay: 3000,},        
         slidesPerView: 1,
       spaceBetween: 12,
       pagination: {
@@ -237,6 +263,39 @@
         }
        }
     });
+
+    jQuery('.input').change(function () { 
+    jQuery(this).next('.label').addClass('filled');         
+    });
+    jQuery("#phoneMain").masks("+38(999) 999-99-99");
+    jQuery("#phoneVacancie").masks("+38(999) 999-99-99");
+
+
+    function setSelectionRange(input, selectionStart, selectionEnd) {
+        if (input.setSelectionRange) {
+            input.focus();
+            input.setSelectionRange(selectionStart, selectionEnd);
+        }
+        else if (input.createTextRange) {
+            var range = input.createTextRange();
+            range.collapse(true);
+            range.moveEnd('character', selectionEnd);
+            range.moveStart('character', selectionStart);
+            range.select();
+        }
+    }
+
+    function setCaretToPos (input, pos) {
+        setSelectionRange(input, pos, pos);
+    }
+
+    jQuery("#phoneMain").click(function () {
+        setCaretToPos(document.getElementById("phoneMain"), 4);
+    });
+    jQuery("#phoneVacancie").click(function () {
+        setCaretToPos(document.getElementById("phoneVacancie"), 4);
+    });
+
 
 
 

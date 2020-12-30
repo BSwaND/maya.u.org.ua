@@ -284,7 +284,7 @@ class PlgSearchContent extends JPlugin
 				$order = ' relevance DESC, ' . $order;
 			}
 
-			$query->select('a.title AS title, a.metadesc, a.metakey, a.created AS created, a.language, a.catid')
+			$query->select('a.title AS title, a.metadesc, a.metakey, a.created AS created, a.language, a.catid, a.images AS images')
 				->select($query->concatenate(array('a.introtext', 'a.fulltext')) . ' AS text')
 				->select('c.title AS section, ' . $case_when . ',' . $case_when1 . ', ' . '\'2\' AS browsernav')
 				->from('#__content AS a')

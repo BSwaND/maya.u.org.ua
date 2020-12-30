@@ -18,6 +18,7 @@
 	$query->andWhere($db->quoteName('c.state') . ' = 1' );
 	$query->andWhere('recommendation.value = ' . 1);
 	$query->group('id');
+	$query->order($db->quoteName('c.publish_up'). 'DESC');
 	$query->setLimit($set_limit);
 	$db->setQuery($query);
 	$product =  $db->loadObjectList();
